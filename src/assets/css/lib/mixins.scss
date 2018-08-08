@@ -1,0 +1,71 @@
+/** 全局变量 **/
+$mask-bg: rgba(4, 4, 4, 0.7);
+
+/** 全局宏 **/
+@mixin mini-border($direction: top, $color: #E6E5EA, $pseudo: before, $radius: 0, $border-style: solid) {
+    &:#{$pseudo} {
+        content: '\a0';
+        position: absolute;
+        z-index: 1;
+        height: 1px; /*no*/
+
+        @if $direction == all {
+            top: 0px;
+            left: 0px;
+            width: 200%;
+            height: 200%;
+            border: $border-style 1px $color;
+            border-radius: #{$radius}px;
+            transform: scale(0.5);
+            -webkit-transform: scale(0.5);
+            transform-origin: 0 0;
+            -webkit-transform-origin: 0 0;
+        }
+
+        @if $direction == top {
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            background-color: $color;
+            transform: scaleY(0.5);
+            -webkit-transform: scaleY(0.5);
+            transform-origin: 0 0;
+            -webkit-transform-origin: 0 0;
+        }
+
+        @if $direction == bottom {
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background-color: $color;
+            transform: scaleY(0.5);
+            -webkit-transform: scaleY(0.5);
+            transform-origin: 100% 100%;
+            -webkit-transform-origin: 100% 100%;
+        }
+
+        @if $direction == left {
+            top: 0px;
+            left: 0px;
+            width: 1px;
+            height: 100%;
+            background-color: $color;
+            transform: scaleX(0.5);
+            -webkit-transform: scaleX(0.5);
+            transform-origin: 0 0;
+            -webkit-transform-origin: 0 0;
+        }
+
+        @if $direction == right {
+            top: 0px;
+            right: 0px;
+            width: 1px;
+            height: 100%;
+            background-color: $color;
+            transform: scaleX(0.5);
+            -webkit-transform: scaleX(0.5);
+            transform-origin: 100% 100%;
+            -webkit-transform-origin: 100% 100%;
+        }
+    }
+}
